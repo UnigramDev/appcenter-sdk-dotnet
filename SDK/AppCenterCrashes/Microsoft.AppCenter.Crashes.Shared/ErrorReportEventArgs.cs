@@ -18,6 +18,22 @@ namespace Microsoft.AppCenter.Crashes
     }
 
     /// <summary>
+    /// Event arguments class for event <see cref="Crashes.CreatingErrorReport"/>.
+    /// </summary>
+    public class CreatingErrorReportEventArgs : EventArgs
+    {
+        /// <summary>
+        /// The id of the report that is being created.
+        /// </summary>
+        public string ReportId;
+
+        /// <summary>
+        /// The exception associated with the report.
+        /// </summary>
+        public Exception Exception;
+    }
+
+    /// <summary>
     /// Event arguments class for event <see cref="Crashes.SendingErrorReport"/>.
     /// </summary>
     public class SendingErrorReportEventArgs : ErrorReportEventArgs { }

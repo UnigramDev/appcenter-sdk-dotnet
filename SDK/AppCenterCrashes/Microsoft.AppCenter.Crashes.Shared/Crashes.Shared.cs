@@ -20,6 +20,11 @@ namespace Microsoft.AppCenter.Crashes
         internal const string LogTag = AppCenterLog.LogTag + nameof(Crashes);
 
         /// <summary>
+        /// Occurs when an error report is about to be created.
+        /// </summary>
+        public static event CreatingErrorReportEventHandler CreatingErrorReport;
+
+        /// <summary>
         /// Occurs when an error report is about to be sent.
         /// </summary>
         public static event SendingErrorReportEventHandler SendingErrorReport;
@@ -137,6 +142,22 @@ namespace Microsoft.AppCenter.Crashes
             else
             {
                 PlatformTrackError(exception, properties, attachments);
+            }
+        }
+
+        /// <summary>
+        /// Track an unhandled error.
+        /// </summary>
+        /// <param name="exception">The .NET exception describing the handled error.</param>
+        public static void TrackCrash(Exception exception)
+        {
+            if (exception == null)
+            {
+                AppCenterLog.Error(LogTag, "TrackCrash exception parameter cannot be null.");
+            }
+            else
+            {
+                PlatformTrackCrash(exception);
             }
         }
 

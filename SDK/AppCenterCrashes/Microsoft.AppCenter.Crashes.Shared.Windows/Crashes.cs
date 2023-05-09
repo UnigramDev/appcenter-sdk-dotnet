@@ -76,8 +76,7 @@ namespace Microsoft.AppCenter.Crashes
 
         private static void OnUnhandledExceptionOccurred(object sender, UnhandledExceptionOccurredEventArgs args)
         {
-            var errorLog = ErrorLogHelper.CreateErrorLog(args.Exception);
-            ErrorLogHelper.SaveErrorLogFiles(args.Exception, errorLog);
+            PlatformTrackCrash(args.Exception);
         }
 
         private static Task<bool> PlatformHasCrashedInLastSessionAsync()
@@ -103,6 +102,13 @@ namespace Microsoft.AppCenter.Crashes
         private static void PlatformTrackError(System.Exception exception, IDictionary<string, string> properties, ErrorAttachmentLog[] attachments)
         {
             Instance.InstanceTrackError(exception, properties, attachments);
+        }
+
+        private static void PlatformTrackCrash(System.Exception exception)
+        {
+            var errorLog = ErrorLogHelper.CreateErrorLog(exception);
+            ErrorLogHelper.SaveErrorLogFiles(exception, errorLog);
+            CreatingErrorReport?.Invoke(null, new CreatingErrorReportEventArgs { ReportId = errorLog.Id.ToString(), Exception = exception });
         }
 
         /// <summary>
@@ -271,15 +277,7 @@ namespace Microsoft.AppCenter.Crashes
                     {
                         lastSessionErrorReport = report;
                     }
-                    if (ShouldProcessErrorReport?.Invoke(report) ?? true)
-                    {
-                        _unprocessedManagedErrorLogs.Add(log.Id, log);
-                    }
-                    else
-                    {
-                        AppCenterLog.Debug(LogTag, $"ShouldProcessErrorReport returned false, clean up and ignore log: {log.Id}");
-                        RemoveAllStoredErrorLogFiles(log.Id);
-                    }
+                    _unprocessedManagedErrorLogs.Add(log.Id, log);
                 }
                 _lastSessionErrorReportTaskSource.SetResult(lastSessionErrorReport);
                 await SendCrashReportsOrAwaitUserConfirmationAsync().ConfigureAwait(false);
@@ -356,7 +354,16 @@ namespace Microsoft.AppCenter.Crashes
                 foreach (var key in keys)
                 {
                     var log = _unprocessedManagedErrorLogs[key];
-                    tasks.Add(Channel.EnqueueAsync(log));
+                    var report = BuildErrorReport(log);
+                    if (ShouldProcessErrorReport?.Invoke(report) ?? true)
+                    {
+                        tasks.Add(Channel.EnqueueAsync(log));
+                    }
+                    else
+                    {
+                        var handled = new HandledErrorLog(log.Device, log.Exception, log.Timestamp, log.Sid, log.UserId, null, log.Id, log.Binaries);
+                        tasks.Add(Channel.EnqueueAsync(handled));
+                    }
                     _unprocessedManagedErrorLogs.Remove(key);
                     ErrorLogHelper.RemoveStoredErrorLogFile(key);
 

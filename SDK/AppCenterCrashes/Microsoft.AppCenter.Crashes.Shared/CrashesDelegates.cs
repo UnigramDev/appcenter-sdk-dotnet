@@ -6,6 +6,13 @@ using System.Collections.Generic;
 namespace Microsoft.AppCenter.Crashes
 {
     /// <summary>
+    /// Handler type for event <see cref="Crashes.CreatingErrorReport"/>.
+    /// </summary>
+    /// <param name="sender">This parameter will be <c>null</c> when being sent from the <see cref="Crashes"/> class and should be ignored. </param>
+    /// <param name="e">Event arguments. See <see cref="CreatingErrorReportEventArgs"/> for more details.</param>
+    public delegate void CreatingErrorReportEventHandler(object sender, CreatingErrorReportEventArgs e);
+
+    /// <summary>
     /// Callback type for determining whether a particular error report should be processed.
     /// </summary>
     /// <returns><c>true</c> if <c>report</c> should be processed.</returns>
