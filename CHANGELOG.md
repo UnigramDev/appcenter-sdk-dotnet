@@ -1,10 +1,59 @@
 # App Center SDK for .NET Change Log
 
-## Version 5.0.2 (Under development)
+## Version 5.0.6 (Under development)
+
+___
+
+## Version 5.0.5
+
+### App Center
+
+* **[Fix]** Fix Mac Catalyst by adding it to the main nuspec package
+
+___
+
+## Version 5.0.4
+
+### App Center
+
+* **[Improvement]** Update DotNet target version to net8
+
+#### Windows
+
+* **[Improvement]** Improve UWP and WinUI app type checking.
+* **[Improvement]** Update SQLitePCLRaw.bundle_green to version 2.1.7
+
+#### Apple
+
+* **[Improvement]** Support Mac Catalyst
+* **[Improvement]** Update PrivacyInfo files to include all relevant information.
+* **[Improvement]** Update PLCrashReporter to version 1.11.2.
+
+#### Android
+
+* **[Fix]** Add RECEIVER_EXPORTED flag for install receiver.
+* **[Fix]** Add FLAG_ALLOW_UNSAFE_IMPLICIT_INTENT flag for broadcast pending intent.
+
+___
+
+## Version 5.0.3
+
+### App Center
+
+* **[Internal]** Add `dataResidencyRegion` option.
+
+#### Windows
+
+* **[Improvement]** Update SQLitePCLRaw.bundle_green to version 2.1.5
+* **[Improvement]** Improved desktop app type checking to work with app life cycle.
+___
+
+## Version 5.0.2
 
 ### App Center
 
 * **[Fix]** Update `Newtonsoft.Json` dependency to version `13.0.2`. The update fixes [GHSA-5crp-9r3c-p9vr](https://github.com/advisories/GHSA-5crp-9r3c-p9vr).
+* **[Fix]** Use `DispatcherUnhandledException` instead of `AppDomain.CurrentDomain.UnhandledException` for WPF applications for postcrash processing. It fixes #1727.
 * **[Improvement]** Remove SmartLink=false, as it may break the SDK integration in some cases.
 * **[Improvement]** Remove flag RegexOptions.Compiled, as it is proved to be slow on net6 and above.
 

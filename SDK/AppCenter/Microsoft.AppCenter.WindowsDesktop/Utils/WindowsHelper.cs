@@ -23,6 +23,8 @@ namespace Microsoft.AppCenter.Utils
 
         public static bool IsRunningAsWinUI { get; }
 
+        public static dynamic WpfApplication { get; }
+
         #region IsRunningAsUwp
 
         const long APPMODEL_ERROR_NO_PACKAGE = 15700L;
@@ -32,22 +34,34 @@ namespace Microsoft.AppCenter.Utils
 
         private static bool _IsRunningAsUwp()
         {
-            if (Environment.OSVersion.Version < new Version(6, 2))
+            try
             {
-                return false;
+                return Assembly.GetEntryAssembly().GetReferencedAssemblies()
+                                .Any(referencedAssembly => referencedAssembly.Name == "Windows.UI.Xaml");
+            }
+            catch (Exception e)
+            {
+                AppCenterLog.Error(AppCenterLog.LogTag, "Failed to determine whether this application is UWP or not.", e);
             }
 
-            int length = 0;
-            var sb = new StringBuilder(0);
-            GetCurrentPackageFullName(ref length, sb);
-
-            sb = new StringBuilder(length);
-            int result = GetCurrentPackageFullName(ref length, sb);
-
-            return result != APPMODEL_ERROR_NO_PACKAGE;
+            return false;
         }
-
         #endregion
+
+        private static bool _IsRunningAsWinUI()
+        {
+            try
+            {
+                return Assembly.GetEntryAssembly().GetReferencedAssemblies()
+                                .Any(referencedAssembly => referencedAssembly.Name == "Microsoft.UI.Xaml" || referencedAssembly.Name == "Microsoft.WinUI");
+            }
+            catch (Exception e)
+            {
+                AppCenterLog.Error(AppCenterLog.LogTag, "Failed to determine whether this application is WinUI or not.", e);
+            }
+
+            return false;
+        }
 
         #region WinEventHook
 
@@ -124,10 +138,8 @@ namespace Microsoft.AppCenter.Utils
                 AppCenterLog.Warn(AppCenterLog.LogTag, "Unabled to determine whether this application is WPF or Windows Forms; proceeding as though it is Windows Forms.");
             }
             IsRunningAsUwp = _IsRunningAsUwp();
-            IsRunningAsWinUI = IsRunningAsUwp || GetAssembly("System.Windows.Forms") == null;
+            IsRunningAsWinUI = IsRunningAsUwp || _IsRunningAsWinUI();
         }
-
-        private static dynamic WpfApplication { get; }
 
         // Store the int corresponding to the "Minimized" state for WPF Windows
         // This is equivalent to `System.Windows.WindowState.Minimized`
