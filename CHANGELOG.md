@@ -127,7 +127,7 @@ ___
 
 * **[Fix]** Fix crash when retrieving device info on early Windows versions.
 * **[Fix]** Update vulnerable version of `SQLitePCLRaw.bundle_green` dependency.
-* **[Fix]** Fix version reporting for non-WinUI applications when target framework is `net5.0-windows10.0.17763.0` or higher.
+* **[Fix]** Fix version reporting for non-WinUI applications when target framework is `net5.0-windows10.0.19041.0` or higher.
 * **[Fix]** Fix `4.5.1` regression of auto session tracking.
 * **[Fix]** Fix duplicate inner exception reporting in `AggregateException`.
 
@@ -158,7 +158,7 @@ ___
 
 #### Windows
 
-* **[Feature]** Add support target framework `net5.0-windows10.0.17763.0` or higher for non-WinUI applications.
+* **[Feature]** Add support target framework `net5.0-windows10.0.19041.0` or higher for non-WinUI applications.
 * **[Fix]** Fix a deadlock that occurs during the services initialization on Windows.
 
 #### macOS 
@@ -234,7 +234,7 @@ ___
 
 #### Windows
 
-* **[Feature]** Add support for platform `WinUI in Desktop`. The target version of `WinUI` apps should be `net5.0-windows10.0.17763.0` or higher. **Known issue**: on WinUI apps, the amount of sessions may be lower than on UWP apps due to specifics of its lifecycle.
+* **[Feature]** Add support for platform `WinUI in Desktop`. The target version of `WinUI` apps should be `net5.0-windows10.0.19041.0` or higher. **Known issue**: on WinUI apps, the amount of sessions may be lower than on UWP apps due to specifics of its lifecycle.
 * **[Fix]** Update `Newtonsoft.Json` dependency to version `13.0.1`.
 * **[Fix]** Fix sending pending logs after the first application start.
 * **[Fix]** Using `ServicePointManager` for setup TLS configuration breaks the ability to use any other TLS protocols except TLS1.2 in the clients' applications. We replaced using `ServicePointManager` to `HttpClient` API for applications with target framework version `4.7.1` or higher. For applications with the target framework version lower than `4.7.1` TLS connection is still configured via `ServicePointManager`.
@@ -594,7 +594,7 @@ App Center Data is [retired](https://aka.ms/MBaaS-retirement-blog-post) and has 
 #### UWP
 
 * **[Feature]** Support ARM64 architecture.
-* **[Breaking change]** The minimum supported Window 10 version is now `10.0.16299.0`.
+* **[Breaking change]** The minimum supported Window 10 version is now `10.0.19041.0`.
 
 #### WPF
 

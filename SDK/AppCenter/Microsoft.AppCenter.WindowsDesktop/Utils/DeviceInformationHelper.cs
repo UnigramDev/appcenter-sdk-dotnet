@@ -223,7 +223,7 @@ namespace Microsoft.AppCenter.Utils
                     return System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString();
                 }
 
-#elif WINDOWS10_0_17763_0_OR_GREATER
+#elif WINDOWS10_0_19041_0_OR_GREATER
                 if (WindowsHelper.IsRunningAsUwp)
                 {
                     try

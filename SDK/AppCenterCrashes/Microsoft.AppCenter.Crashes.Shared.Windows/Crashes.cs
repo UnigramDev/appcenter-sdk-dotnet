@@ -15,6 +15,29 @@ using System.Threading.Tasks;
 
 namespace Microsoft.AppCenter.Crashes
 {
+    public class NativeException : System.Exception
+    {
+        private readonly string _stackTrace;
+
+        public NativeException(string message, string stackTrace, IEnumerable<NativeStackFrame> frames)
+            : base(message)
+        {
+            _stackTrace = stackTrace;
+            Frames = frames.ToList();
+        }
+
+        public override string StackTrace => _stackTrace;
+
+        public IList<NativeStackFrame> Frames { get; }
+    }
+
+    public abstract class NativeStackFrame
+    {
+        public abstract IntPtr GetNativeIP();
+
+        public abstract IntPtr GetNativeImageBase();
+    }
+
     public partial class Crashes : AppCenterService
     {
         private static readonly object CrashesLock = new object();
@@ -361,7 +384,7 @@ namespace Microsoft.AppCenter.Crashes
                     }
                     else
                     {
-                        var handled = new HandledErrorLog(log.Device, log.Exception, log.Timestamp, log.Sid, log.UserId, null, log.Id, log.Binaries);
+                        var handled = new HandledErrorLog(log.Device, log.Exception, log.Timestamp, log.Sid, log.UserId, log.DataResidencyRegion, null, log.Id, log.Binaries);
                         tasks.Add(Channel.EnqueueAsync(handled));
                     }
                     _unprocessedManagedErrorLogs.Remove(key);

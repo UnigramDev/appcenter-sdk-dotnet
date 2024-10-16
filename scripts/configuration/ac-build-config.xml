@@ -77,19 +77,19 @@
         <assembly path="SDK/AppCenterCrashes/Microsoft.AppCenter.Crashes.WindowsDesktop/bin/Release/netcoreapp3.1/Microsoft.AppCenter.Crashes.dll"/>
     </group>
     <group id="windows_net6" buildGroup="windows">
-        <assembly path="SDK/AppCenter/Microsoft.AppCenter.WindowsDesktop/bin/Release/net6.0-windows10.0.17763.0/Microsoft.AppCenter.dll"/>
-        <assembly path="SDK/AppCenterAnalytics/Microsoft.AppCenter.Analytics.WindowsDesktop/bin/Release/net6.0-windows10.0.17763.0/Microsoft.AppCenter.Analytics.dll"/>
-        <assembly path="SDK/AppCenterCrashes/Microsoft.AppCenter.Crashes.WindowsDesktop/bin/Release/net6.0-windows10.0.17763.0/Microsoft.AppCenter.Crashes.dll"/>
+        <assembly path="SDK/AppCenter/Microsoft.AppCenter.WindowsDesktop/bin/Release/net6.0-windows10.0.19041.0/Microsoft.AppCenter.dll"/>
+        <assembly path="SDK/AppCenterAnalytics/Microsoft.AppCenter.Analytics.WindowsDesktop/bin/Release/net6.0-windows10.0.19041.0/Microsoft.AppCenter.Analytics.dll"/>
+        <assembly path="SDK/AppCenterCrashes/Microsoft.AppCenter.Crashes.WindowsDesktop/bin/Release/net6.0-windows10.0.19041.0/Microsoft.AppCenter.Crashes.dll"/>
     </group>
     <group id="uwp" buildGroup="windows">
-        <assembly path="SDK/AppCenter/Microsoft.AppCenter.UWP/bin/Release/uap10.0.16299/Microsoft.AppCenter.dll"/>
-        <assembly path="SDK/AppCenterAnalytics/Microsoft.AppCenter.Analytics.UWP/bin/Release/uap10.0.16299/Microsoft.AppCenter.Analytics.dll"/>
-        <assembly path="SDK/AppCenterCrashes/Microsoft.AppCenter.Crashes.UWP/bin/Release/uap10.0.16299/Microsoft.AppCenter.Crashes.dll"/>
+        <assembly path="SDK/AppCenter/Microsoft.AppCenter.UWP/bin/Release/uap10.0.19041/Microsoft.AppCenter.dll"/>
+        <assembly path="SDK/AppCenterAnalytics/Microsoft.AppCenter.Analytics.UWP/bin/Release/uap10.0.19041/Microsoft.AppCenter.Analytics.dll"/>
+        <assembly path="SDK/AppCenterCrashes/Microsoft.AppCenter.Crashes.UWP/bin/Release/uap10.0.19041/Microsoft.AppCenter.Crashes.dll"/>
     </group>
     <group id="unity_uwp" buildGroup="windows">
-        <assembly path="SDK/AppCenter/Microsoft.AppCenter.UWP/bin/Release/net461/Microsoft.AppCenter.dll"/>
-        <assembly path="SDK/AppCenterAnalytics/Microsoft.AppCenter.Analytics.UWP/bin/Release/net461/Microsoft.AppCenter.Analytics.dll"/>
-        <assembly path="SDK/AppCenterCrashes/Microsoft.AppCenter.Crashes.UWP/bin/Release/net461/Microsoft.AppCenter.Crashes.dll"/>
+        <assembly path="SDK/AppCenter/Microsoft.AppCenter.UWP/bin/Release/net462/Microsoft.AppCenter.dll"/>
+        <assembly path="SDK/AppCenterAnalytics/Microsoft.AppCenter.Analytics.UWP/bin/Release/net462/Microsoft.AppCenter.Analytics.dll"/>
+        <assembly path="SDK/AppCenterCrashes/Microsoft.AppCenter.Crashes.UWP/bin/Release/net462/Microsoft.AppCenter.Crashes.dll"/>
     </group>
     <module dotnetModule="SDK/AppCenter/Microsoft.AppCenter" nuspec="AppCenter.nuspec"/>
     <module dotnetModule="SDK/AppCenterAnalytics/Microsoft.AppCenter.Analytics" nuspec="AppCenterAnalytics.nuspec"/>

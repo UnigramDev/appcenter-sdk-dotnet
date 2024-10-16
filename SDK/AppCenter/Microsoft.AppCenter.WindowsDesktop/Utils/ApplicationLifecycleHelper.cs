@@ -31,7 +31,7 @@ namespace Microsoft.AppCenter
             {
                 if (_instance == null)
                 {
-#if WINDOWS10_0_17763_0_OR_GREATER
+#if WINDOWS10_0_19041_0_OR_GREATER
                     if (WindowsHelper.IsRunningAsWinUI)
                     {
                         AppCenterLog.Debug(AppCenterLog.LogTag, "Use lifecycle for WinUI applications.");

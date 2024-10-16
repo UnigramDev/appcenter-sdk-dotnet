@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-#if WINDOWS10_0_17763_0_OR_GREATER
+#if WINDOWS10_0_19041_0_OR_GREATER
 using System;
 using System.Runtime.ExceptionServices;
 using Windows.ApplicationModel.Core;

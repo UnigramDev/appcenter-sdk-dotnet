@@ -46,7 +46,7 @@ namespace Contoso.UWP.Puppet
             // Contoso.Forms.Puppet.UWP has more crash types and UI features to test properties.
             // This app is just for smoke testing.
             // Also this app uses min SDK version to 10240, which changes the .NET native generated code to have missing symbols for handled errors.
-            // Handled errors in the forms app never hit that case because we need to use v16299 there.
+            // Handled errors in the forms app never hit that case because we need to use v19041 there.
             await GenerateComplexException(2);
         }
 

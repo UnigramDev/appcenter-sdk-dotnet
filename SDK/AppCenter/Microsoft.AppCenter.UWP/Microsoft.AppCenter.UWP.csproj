@@ -3,22 +3,22 @@
   <PropertyGroup>
 
     <!-- .NET Framework 4.6.1 is used in Unity. -->
-    <TargetFrameworks>uap10.0.16299;net461</TargetFrameworks>
+    <TargetFrameworks>uap10.0.19041;net462</TargetFrameworks>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'uap10.0.16299' ">
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'uap10.0.19041' ">
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.17763.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
+    <TargetPlatformVersion>10.0.19041.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.19041.0</TargetPlatformMinVersion>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
-    <PackageReference Include="SQLitePCLRaw.bundle_winsqlite3" Version="2.1.0" />
+    <PackageReference Include="SQLitePCLRaw.bundle_winsqlite3" Version="2.1.10" />
   </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'uap10.0.16299'">
+  <ItemGroup Condition="'$(TargetFramework)' == 'uap10.0.19041'">
     <TransformFile Include="Properties\Microsoft.AppCenter.UWP.rd.xml" />
   </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'net461'">
-    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.17763.1000" />
+  <ItemGroup Condition="'$(TargetFramework)' == 'net462'">
+    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.19041.1000" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\Microsoft.AppCenter.Shared\**\*.cs" />

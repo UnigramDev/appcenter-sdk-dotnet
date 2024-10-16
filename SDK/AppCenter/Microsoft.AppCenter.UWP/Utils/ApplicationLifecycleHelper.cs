@@ -45,7 +45,7 @@ namespace Microsoft.AppCenter.Utils
             CoreApplication.Suspending += InvokeSuspended;
 
             // If the "LeavingBackground" event is present, use that for Resuming. Else, use CoreApplication.Resuming.
-            if (ApiInformation.IsEventPresent(typeof(CoreApplication).FullName, "LeavingBackground"))
+            if (false && ApiInformation.IsEventPresent(typeof(CoreApplication).FullName, "LeavingBackground"))
             {
                 CoreApplication.LeavingBackground += InvokeResuming;
 
