@@ -64,7 +64,16 @@ namespace Microsoft.AppCenter.Crashes.Utils
 
             foreach (var part in parts)
             {
-                builder.AppendLine(TranslateText(part));
+                var index = part.IndexOf('(');
+                if (index > 0)
+                {
+                    builder.Append(TranslateText(part.Substring(0, index - 1)));
+                    builder.Append(part.Substring(index));
+                }
+                else
+                {
+                    builder.AppendLine(TranslateText(part));
+                }
             }
 
             return builder.ToString();
@@ -74,15 +83,19 @@ namespace Microsoft.AppCenter.Crashes.Utils
         {
             switch (text)
             {
+                case "L’interface de périphérique ou niveau de fonctionnalité spécifié n’est pas pris en charge sur ce système.":
                 case "A interface de dispositivo ou nível de recurso especificado não tem suporte neste sistema.":
                 case "Указанный интерфейс устройства или уровень компонента не поддерживается в данной системе.":
                 case "此系統不支援指定的裝置介面或功能層級。":
                     return "The specified device interface or feature level is not supported on this system.";
 
+                case "Le texte associé à ce code d’erreur est introuvable.":
                 case "Der Text zu diesem Fehlercode wurde nicht gefunden.":
                 case "O texto associado a este código de erro não foi localizado.":
+                case "Не удалось найти текст, связанный с этим кодом ошибки.":
                     return "The text associated with this error code could not be found.";
 
+                case "L’objet invoqué s’est déconnecté de ses clients.":
                 case "El objeto invocado ha desconectado de sus clientes.":
                 case "L'oggetto invocato si è disconnesso dai client corrispondenti.":
                     return "The object invoked has disconnected from its clients.";
@@ -102,6 +115,7 @@ namespace Microsoft.AppCenter.Crashes.Utils
                 case "エラーを特定できません":
                     return "Unspecified error";
 
+                case "L’instance de périphérique GPU a été suspendue. Utilisez GetDeviceRemovedReason pour déterminer l’action appropriée.":
                 case "La instancia de dispositivo de GPU se ha suspendido. Use GetDeviceRemovedReason para averiguar cuál es la acción adecuada.":
                 case "Экземпляр устройства GPU приостановлен. Для определения соответствующего действия используйте GetDeviceRemovedReason.":
                     return "The GPU device instance has been suspended. Use GetDeviceRemovedReason to determine the appropriate action.";
@@ -116,6 +130,8 @@ namespace Microsoft.AppCenter.Crashes.Utils
                 case "Parametro non corretto.":
                 case "Parametre hatalı.":
                 case "Параметр задан неверно.":
+                case "Parametri ei kelpaa":
+                case "매개 변수가 틀립니다.":
                     return "The parameter is incorrect.";
 
                 case "Geçersiz işaretçi":
@@ -163,6 +179,9 @@ namespace Microsoft.AppCenter.Crashes.Utils
 
                 case "Разрушительный сбой":
                     return "Catastrophic failure";
+
+                case "Асинхронная операция не запущена должным образом.":
+                    return "An async operation was not properly started.";
 
                 default:
                     return text;
