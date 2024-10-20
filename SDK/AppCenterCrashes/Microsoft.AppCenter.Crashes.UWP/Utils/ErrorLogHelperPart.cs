@@ -97,6 +97,7 @@ namespace Microsoft.AppCenter.Crashes.Utils
 
                 case "L’objet invoqué s’est déconnecté de ses clients.":
                 case "El objeto invocado ha desconectado de sus clientes.":
+                case "No se pudo encontrar el texto asociado a este código de error.":
                 case "L'oggetto invocato si è disconnesso dai client corrispondenti.":
                     return "The object invoked has disconnected from its clients.";
 
@@ -121,7 +122,11 @@ namespace Microsoft.AppCenter.Crashes.Utils
                     return "The GPU device instance has been suspended. Use GetDeviceRemovedReason to determine the appropriate action.";
 
                 case "Élément introuvable.":
+                case "No se ha encontrado el elemento.":
                 case "Elemento não encontrado.":
+                case "Kan element niet vinden.":
+                case "Eleman bulunamadı.":
+                case "Элемент не найден.":
                     return "Element not found.";
 
                 case "Falscher Parameter.":
@@ -157,12 +162,15 @@ namespace Microsoft.AppCenter.Crashes.Utils
                 case "Les ressources mémoire disponibles sont insuffisantes pour exécuter cette opération.":
                 case "Le risorse di memoria disponibili insufficienti per completare l'operazione.":
                 case "No hay suficientes recursos de memoria disponibles para completar esta operación.":
+                case "Recursos de memória insuficientes disponíveis para concluir a operação.":
+                case "Für diesen Vorgang sind nicht genügend Speicherressourcen verfügbar.":
                 case "Недостаточно ресурсов памяти для завершения операции.":
                 case "メモリ リソースが不足しているため、この操作を完了できません。":
                     return "Not enough memory resources are available to complete this operation.";
 
                 case "Le serveur RPC n’est pas disponible.":
                 case "O servidor RPC não está disponível.":
+                case "Der RPC-Server ist nicht verfügbar.":
                 case "Serwer RPC jest niedostępny.":
                 case "Сервер RPC недоступен.":
                     return "The RPC server is unavailable.";
@@ -171,10 +179,13 @@ namespace Microsoft.AppCenter.Crashes.Utils
                     return "The remote procedure call failed.";
 
                 case "No se han detectado componentes instalados.":
+                case "Не обнаружено установленных компонентов.":
                     return "No installed components were detected.";
 
+                case "Opération abandonnée":
                 case "Operação anulada":
                 case "Операция прервана":
+                case "İşlem iptal edildi":
                     return "Operation aborted";
 
                 case "Разрушительный сбой":
@@ -182,6 +193,21 @@ namespace Microsoft.AppCenter.Crashes.Utils
 
                 case "Асинхронная операция не запущена должным образом.":
                     return "An async operation was not properly started.";
+
+                case "Попытка произвести недопустимую операцию над параметром реестра, отмеченным для удаления.":
+                    return "Illegal operation attempted on a registry key that has been marked for deletion.";
+
+                case "Отказано в доступе.":
+                    return "Access is denied.";
+
+                case "Échec de l’exécution du serveur":
+                    return "Server execution failed";
+
+                case "O filtro de mensagens indicou que o aplicativo está ocupado.":
+                case "El filtro de mensaje indicó que la aplicación está ocupada.":
+                case "İleti filtresi uygulamanın kullanımda olduğunu belirledi.":
+                case "Фильтр сообщений выдал диагностику о занятости приложения.":
+                    return "The message filter indicated that the application is busy.";
 
                 default:
                     return text;
