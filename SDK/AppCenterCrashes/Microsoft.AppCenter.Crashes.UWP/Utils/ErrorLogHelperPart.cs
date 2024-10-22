@@ -99,6 +99,7 @@ namespace Microsoft.AppCenter.Crashes.Utils
                 case "El objeto invocado ha desconectado de sus clientes.":
                 case "No se pudo encontrar el texto asociado a este código de error.":
                 case "L'oggetto invocato si è disconnesso dai client corrispondenti.":
+                case "Вызванный объект был отключен от клиентов.":
                     return "The object invoked has disconnected from its clients.";
 
                 case "Unbekannter Fehler":
@@ -125,6 +126,7 @@ namespace Microsoft.AppCenter.Crashes.Utils
                 case "No se ha encontrado el elemento.":
                 case "Elemento não encontrado.":
                 case "Kan element niet vinden.":
+                case "Impossibile trovare elemento.":
                 case "Eleman bulunamadı.":
                 case "Элемент не найден.":
                     return "Element not found.";
@@ -157,6 +159,7 @@ namespace Microsoft.AppCenter.Crashes.Utils
 
                 case "L’application a appelé une interface qui était maintenue en ordre pour un thread différent.":
                 case "O aplicativo chamou uma interface marshalled para um outro thread.":
+                case "Приложение обратилось к интерфейсу, относящемуся к другому потоку.":
                     return "The application called an interface that was marshalled for a different thread.";
 
                 case "Les ressources mémoire disponibles sont insuffisantes pour exécuter cette opération.":
@@ -164,8 +167,10 @@ namespace Microsoft.AppCenter.Crashes.Utils
                 case "No hay suficientes recursos de memoria disponibles para completar esta operación.":
                 case "Recursos de memória insuficientes disponíveis para concluir a operação.":
                 case "Für diesen Vorgang sind nicht genügend Speicherressourcen verfügbar.":
+                case "Otillräckligt med ledigt minne för att slutföra den här åtgärden.":
                 case "Недостаточно ресурсов памяти для завершения операции.":
                 case "メモリ リソースが不足しているため、この操作を完了できません。":
+                case "記憶體資源不足，無法完成此作業。":
                     return "Not enough memory resources are available to complete this operation.";
 
                 case "Le serveur RPC n’est pas disponible.":
@@ -203,8 +208,10 @@ namespace Microsoft.AppCenter.Crashes.Utils
                 case "Échec de l’exécution du serveur":
                     return "Server execution failed";
 
+                case "Le filtre de messages indiquait que l’application était occupée.":
                 case "O filtro de mensagens indicou que o aplicativo está ocupado.":
                 case "El filtro de mensaje indicó que la aplicación está ocupada.":
+                case "Het berichtenfilter heeft aangegeven dat de toepassing bezet is.":
                 case "İleti filtresi uygulamanın kullanımda olduğunu belirledi.":
                 case "Фильтр сообщений выдал диагностику о занятости приложения.":
                     return "The message filter indicated that the application is busy.";
