@@ -68,7 +68,7 @@ namespace Microsoft.AppCenter.Crashes.Utils
                 if (index > 0)
                 {
                     builder.Append(TranslateText(part.Substring(0, index - 1)));
-                    builder.Append(part.Substring(index));
+                    builder.Append(part.Substring(index - 1));
                 }
                 else
                 {
