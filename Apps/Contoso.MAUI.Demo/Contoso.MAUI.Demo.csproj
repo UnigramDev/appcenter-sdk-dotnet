@@ -2,14 +2,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
-    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net6.0-windows10.0.19041.0</TargetFrameworks>
+    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">
+      $(TargetFrameworks);net6.0-windows10.0.19041.0</TargetFrameworks>
     <OutputType>Exe</OutputType>
     <RootNamespace>Contoso.MAUI.Demo</RootNamespace>
     <UseMaui>true</UseMaui>
     <UsingMauiEssentials>true</UsingMauiEssentials>
     <SingleProject>true</SingleProject>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Version>5.0.5</Version>
+    <Version>5.0.6</Version>
     <!-- Display name -->
     <ApplicationTitle>Contoso.MAUI.Demo</ApplicationTitle>
     <!-- App Identifier -->
@@ -34,9 +35,15 @@
     <NoWarn></NoWarn>
     <NoStdLib>false</NoStdLib>
   </PropertyGroup>
+  <PropertyGroup
+    Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
+    <RuntimeIdentifier>iossimulator-x64</RuntimeIdentifier>
+    <ForceSimulatorX64ArchitectureInIDE>true</ForceSimulatorX64ArchitectureInIDE>
+  </PropertyGroup>
   <ItemGroup>
     <!-- App Icon -->
-    <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+    <MauiIcon Include="Resources\AppIcon\appicon.svg"
+      ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
     <!-- Splash Screen -->
     <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
     <!-- Images -->
@@ -56,13 +63,13 @@
     <None Remove="Platforms\iOS\Resources\Images\socket.png" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="5.0.5" />
-    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="5.0.5" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="5.0.6" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="5.0.6" />
   </ItemGroup>
   <ItemGroup Condition=" '$(Configuration)'!='GooglePlay' ">
-    <PackageReference Include="Microsoft.AppCenter.Distribute" Version="5.0.5" />
+    <PackageReference Include="Microsoft.AppCenter.Distribute" Version="5.0.6" />
   </ItemGroup>
   <ItemGroup Condition=" '$(Configuration)'=='GooglePlay' ">
-    <PackageReference Include="Microsoft.AppCenter.DistributePlay" Version="5.0.5" />
+    <PackageReference Include="Microsoft.AppCenter.DistributePlay" Version="5.0.6" />
   </ItemGroup>
 </Project>
