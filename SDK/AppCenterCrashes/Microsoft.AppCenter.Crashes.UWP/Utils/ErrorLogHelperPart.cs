@@ -59,11 +59,18 @@ namespace Microsoft.AppCenter.Crashes.Utils
 
         private static string TranslateMessage(string message)
         {
-            var parts = message.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            var parts = message.Split(new[] { '\r', '\n' });
             var builder = new StringBuilder();
 
-            foreach (var part in parts)
+            for (int i = 0; i < parts.Length; i++)
             {
+                if (i > 0)
+                {
+                    builder.Append(Environment.NewLine);
+                }
+
+                var part = parts[i];
+
                 var index = part.IndexOf('(');
                 if (index > 0)
                 {
@@ -72,7 +79,7 @@ namespace Microsoft.AppCenter.Crashes.Utils
                 }
                 else
                 {
-                    builder.AppendLine(TranslateText(part));
+                    builder.Append(TranslateText(part));
                 }
             }
 
@@ -92,13 +99,19 @@ namespace Microsoft.AppCenter.Crashes.Utils
                 case "Le texte associé à ce code d’erreur est introuvable.":
                 case "Der Text zu diesem Fehlercode wurde nicht gefunden.":
                 case "O texto associado a este código de erro não foi localizado.":
+                case "Bu hata koduyla ilişkili metin bulunamadı.":
+                case "Impossibile trovare il testo associato a questo codice di errore.":
+                case "De tekst die bij deze foutcode hoort, kan niet worden gevonden.":
                 case "Не удалось найти текст, связанный с этим кодом ошибки.":
+                case "无法找到与此错误代码关联的文本。":
+                case "找不到與此錯誤碼關聯的文字。":
                     return "The text associated with this error code could not be found.";
 
                 case "L’objet invoqué s’est déconnecté de ses clients.":
                 case "El objeto invocado ha desconectado de sus clientes.":
                 case "No se pudo encontrar el texto asociado a este código de error.":
                 case "L'oggetto invocato si è disconnesso dai client corrispondenti.":
+                case "Das aufgerufene Objekt wurde von den Clients getrennt.":
                 case "Вызванный объект был отключен от клиентов.":
                     return "The object invoked has disconnected from its clients.";
 
@@ -111,6 +124,7 @@ namespace Microsoft.AppCenter.Crashes.Utils
                 case "Errore non specificato.":
                 case "Nieokreślony błąd.":
                 case "Odefinierat fel":
+                case "Määrittämätön virhe.":
                 case "Неопознанная ошибка":
                 case "未指定的错误":
                 case "지정되지 않은 오류입니다.":
@@ -144,6 +158,7 @@ namespace Microsoft.AppCenter.Crashes.Utils
                 case "Geçersiz işaretçi":
                 case "Pointeur non valide":
                 case "Puntero no válido":
+                case "Ungültiger Zeiger":
                 case "Неправильный указатель":
                     return "Invalid pointer";
 
@@ -168,6 +183,8 @@ namespace Microsoft.AppCenter.Crashes.Utils
                 case "Recursos de memória insuficientes disponíveis para concluir a operação.":
                 case "Für diesen Vorgang sind nicht genügend Speicherressourcen verfügbar.":
                 case "Otillräckligt med ledigt minne för att slutföra den här åtgärden.":
+                case "Ikke nok minneressurser tilgjengelig for å fullføre denne operasjonen.":
+                case "Bu işlemi tamamlamak için yeterli bellek kaynağı yok.":
                 case "Недостаточно ресурсов памяти для завершения операции.":
                 case "メモリ リソースが不足しているため、この操作を完了できません。":
                 case "記憶體資源不足，無法完成此作業。":
@@ -184,15 +201,19 @@ namespace Microsoft.AppCenter.Crashes.Utils
                     return "The remote procedure call failed.";
 
                 case "No se han detectado componentes instalados.":
+                case "Nenhum componente instalado foi detectado.":
+                case "Keine installierten Komponenten gefunden.":
                 case "Не обнаружено установленных компонентов.":
                     return "No installed components were detected.";
 
                 case "Opération abandonnée":
                 case "Operação anulada":
+                case "Operación anulada":
                 case "Операция прервана":
                 case "İşlem iptal edildi":
                     return "Operation aborted";
 
+                case "Falha catastrófica":
                 case "Разрушительный сбой":
                     return "Catastrophic failure";
 
@@ -212,9 +233,13 @@ namespace Microsoft.AppCenter.Crashes.Utils
                 case "O filtro de mensagens indicou que o aplicativo está ocupado.":
                 case "El filtro de mensaje indicó que la aplicación está ocupada.":
                 case "Het berichtenfilter heeft aangegeven dat de toepassing bezet is.":
+                case "Il filtro messaggi ha indicato che l'applicazione è impegnata.":
                 case "İleti filtresi uygulamanın kullanımda olduğunu belirledi.":
                 case "Фильтр сообщений выдал диагностику о занятости приложения.":
                     return "The message filter indicated that the application is busy.";
+
+                case "%1 не является приложением Win32.":
+                    return "%1 is not a valid Win32 application.";
 
                 default:
                     return text;
