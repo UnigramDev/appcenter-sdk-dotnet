@@ -102,7 +102,9 @@ namespace Microsoft.AppCenter.Crashes.Utils
                 case "Bu hata koduyla ilişkili metin bulunamadı.":
                 case "Impossibile trovare il testo associato a questo codice di errore.":
                 case "De tekst die bij deze foutcode hoort, kan niet worden gevonden.":
+                case "Nie można znaleźć tekstu skojarzonego z tym kodem błędu.":
                 case "Не удалось найти текст, связанный с этим кодом ошибки.":
+                case "이 오류 코드와 연결된 텍스트를 찾을 수 없습니다.":
                 case "无法找到与此错误代码关联的文本。":
                 case "找不到與此錯誤碼關聯的文字。":
                     return "The text associated with this error code could not be found.";
@@ -181,6 +183,7 @@ namespace Microsoft.AppCenter.Crashes.Utils
                 case "Le risorse di memoria disponibili insufficienti per completare l'operazione.":
                 case "No hay suficientes recursos de memoria disponibles para completar esta operación.":
                 case "Recursos de memória insuficientes disponíveis para concluir a operação.":
+                case "Não existem recursos de memória suficientes para concluir esta operação.":
                 case "Für diesen Vorgang sind nicht genügend Speicherressourcen verfügbar.":
                 case "Otillräckligt med ledigt minne för att slutföra den här åtgärden.":
                 case "Ikke nok minneressurser tilgjengelig for å fullføre denne operasjonen.":
@@ -198,11 +201,15 @@ namespace Microsoft.AppCenter.Crashes.Utils
                     return "The RPC server is unavailable.";
 
                 case "Zdalne wywołanie procedury nie powiodło się.":
+                case "Сбой при удаленном вызове процедуры.":
                     return "The remote procedure call failed.";
 
+                case "Aucun composant installé n’a été détecté.":
                 case "No se han detectado componentes instalados.":
                 case "Nenhum componente instalado foi detectado.":
                 case "Keine installierten Komponenten gefunden.":
+                case "Non è stato rilevato alcun componente installato.":
+                case "Yüklü bileşen algılanamadı.":
                 case "Не обнаружено установленных компонентов.":
                     return "No installed components were detected.";
 
@@ -240,6 +247,9 @@ namespace Microsoft.AppCenter.Crashes.Utils
 
                 case "%1 не является приложением Win32.":
                     return "%1 is not a valid Win32 application.";
+
+                case "Группа или ресурс не находятся в нужном состоянии для выполнения требуемой операции.":
+                    return "The group or resource is not in the correct state to perform the requested operation.";
 
                 default:
                     return text;
